@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge" >
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
+</head>
+<body>
+<p>first name: <input data-bind="value: firstName" /> フォーカスを失う時に反映</p>
+<p>last name: <input data-bind="value: lastName, valueUpdate: 'afterkeydown'" /> キー入力ごとに反映</p>
+<p>Full name: <span data-bind="text: fullName"></span></p>
+<script>
+$(function() {
+    var myViewModel = function(first, last) {
+        this.firstName = ko.observable(first);
+        this.lastName = ko.observable(last);
+        this.fullName = ko.computed(function() {
+            return this.firstName() + " " + this.lastName();
+        }, this);
+    };
+    ko.applyBindings(new myViewModel("花子", "山田"));
+});
+</script>
+</body>
+</html>
+

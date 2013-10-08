@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="x-ua-compatible" content="IE=edge" >
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"></script>
+</head>
+<body>
+<p><input type="text" data-bind="value: message, valueUpdate: 'afterkeydown'"></p>
+<p id='result' data-bind="text: message"></p>
+<script>
+$(function() {
+    function TestappViewModel() {
+        this.message = ko.observable('');
+    }
+    ko.applyBindings(new TestappViewModel());
+});
+</script>
+</body>
+</html>
+
